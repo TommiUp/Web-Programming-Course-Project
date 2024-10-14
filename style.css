@@ -22,7 +22,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center the buttons */
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 10px;
@@ -34,7 +33,6 @@ body {
     margin-bottom: 5px;
     font-size: 15px;
     text-align: center;
-    /* Center the text */
 }
 
 /* General Button Styling */

@@ -6,6 +6,8 @@ document.getElementById('download-chart-png').addEventListener('click', download
 // Change color mode button
 document.getElementById('change-color-hue').addEventListener('click', () => {
     currentColorMode = currentColorMode === 'migration' ? 'population' : 'migration';
+
+    // Remove existing GeoJSON layers from the map
     map.eachLayer((layer) => {
         if (layer instanceof L.GeoJSON) {
             map.removeLayer(layer);
@@ -18,14 +20,18 @@ document.getElementById('change-color-hue').addEventListener('click', () => {
 
 // Marker drag and drop for desktop
 const markerImg = document.getElementById('draggable-marker');
+
+// When dragging starts on the marker image
 markerImg.addEventListener('dragstart', (event) => {
     event.dataTransfer.setData('text/plain', 'marker');
 });
 
+// Allows the map container to accept dragged elements
 map.getContainer().addEventListener('dragover', (event) => {
     event.preventDefault();
 });
 
+// Handles the drop event on the map container
 map.getContainer().addEventListener('drop', async (event) => {
     event.preventDefault();
     const latLng = map.mouseEventToLatLng(event);
@@ -61,6 +67,7 @@ document.addEventListener('touchmove', (event) => {
     }
 });
 
+// Handles touch move events on mobile
 document.addEventListener('touchend', async (event) => {
     if (isDraggingMarker && tempMarkerImg) {
         // Get the position where the touch ended
@@ -95,6 +102,7 @@ document.getElementById('generate-new-data').addEventListener('click', generateN
 
 // Other functions related to events
 
+// Function to close the chart view
 function closeChart() {
     document.getElementById('chart-container').style.display = 'none';
     document.getElementById('map').style.display = 'block';
@@ -118,6 +126,7 @@ function closeChart() {
     map.invalidateSize(); // Ensures the map is properly resized and event listeners work
 }
 
+// Function to generate new data based on the 2 markers
 async function generateNewData() {
     // Check that there are 2 markers
     if (markers.length !== 2) {
@@ -153,6 +162,7 @@ async function generateNewData() {
     }
 }
 
+// Function to show combination options in the modal menu
 function showDataCombinationOptions(data1, data2, name1, name2) {
     // Display the modal
     const modal = document.getElementById('data-combination-modal');
@@ -186,6 +196,7 @@ function showDataCombinationOptions(data1, data2, name1, name2) {
     };
 }
 
+// Function to download PNG of every chart
 function downloadChartPNG() {
     if (chartInstance) {
         const chartElement = document.getElementById('chart');
@@ -203,11 +214,12 @@ function downloadChartPNG() {
                 source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
             }
 
-            // Convert SVG source to URI data scheme
+            // Convert the SVG source to a data URL
             const svgData = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
 
             const image = new Image();
             image.onload = function () {
+                // Create a canvas element
                 const canvas = document.createElement('canvas');
                 canvas.width = image.width;
                 canvas.height = image.height;

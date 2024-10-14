@@ -97,6 +97,7 @@ function addDataPrediction() {
     }
 }
 
+// Function to show chart of the combined data
 function showCombinedChart(chartData, operation, name1, name2) {
     // Hide map and show chart container
     const chartContainer = document.getElementById('chart-container');
