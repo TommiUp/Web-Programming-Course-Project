@@ -1,8 +1,8 @@
 // chart.js
 
 // Variables for chart
-var chartInstance = null;
-var originalChartData = null;
+let chartInstance = null;
+let originalChartData = null;
 
 // Function to show charts
 async function showChart(municipalityCode, municipalityName, type) {

@@ -1,18 +1,18 @@
 // map.js
 
 // Map Initialization
-var map = L.map('map', { minZoom: -3 });
+let map = L.map('map', { minZoom: -3 });
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
 // Global Variables
-var GeoJsonData = null;
-var currentColorMode = 'migration'; // Default mode is migration
-var markers = [];  // To store the draggable markers
+let GeoJsonData = null;
+let currentColorMode = 'migration'; // Default mode is migration
+let markers = [];  // To store the draggable markers
 const maxMarkers = 2;
-var isDraggingMarker = false;
-var tempMarkerImg = null;
+let isDraggingMarker = false;
+let tempMarkerImg = null;
 
 // Function to update the color based on the current mode (migration or population)
 function getColorBasedOnMode(municipalityCode) {

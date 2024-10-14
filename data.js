@@ -1,9 +1,9 @@
 // data.js
 
 // Data Variables
-var positiveMigrationData = {};
-var negativeMigrationData = {};
-var populationData = {};
+let positiveMigrationData = {};
+let negativeMigrationData = {};
+let populationData = {};
 
 // Fetch data from API
 async function fetchData(url, options = {}) {
