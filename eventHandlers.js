@@ -58,7 +58,7 @@ markerImg.addEventListener('touchstart', (event) => {
     tempMarkerImg.style.left = `${touch.clientX - 15}px`;
     tempMarkerImg.style.top = `${touch.clientY - 50}px`;
 });
-
+// Handle touch move events on mobile
 document.addEventListener('touchmove', (event) => {
     if (isDraggingMarker && tempMarkerImg) {
         const touch = event.touches[0];
@@ -67,7 +67,7 @@ document.addEventListener('touchmove', (event) => {
     }
 });
 
-// Handles touch move events on mobile
+// Handle touch end events on mobile
 document.addEventListener('touchend', async (event) => {
     if (isDraggingMarker && tempMarkerImg) {
         // Get the position where the touch ended
