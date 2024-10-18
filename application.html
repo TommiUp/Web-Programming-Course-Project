@@ -1,0 +1,69 @@
+<!-- application.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Municipality Data</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/frappe-charts@latest"></script>
+    <script src="https://unpkg.com/leaflet-pip@latest/leaflet-pip.min.js"></script>
+</head>
+
+<body>
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Data Combination Modal -->
+    <div id="data-combination-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="close-modal">&times;</span>
+            <h2>Combine Population Data</h2>
+            <p>Select the operation to combine the population data:</p>
+            <select id="data-operation">
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiply">Multiply</option>
+                <option value="divide">Divide</option>
+            </select>
+            <br><br>
+            <button id="generate-chart">Generate Chart</button>
+        </div>
+    </div>
+
+    <!-- Marker Section -->
+    <div id="marker-section">
+        <img id="draggable-marker" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png"
+            draggable="true" width="25" height="41" alt="Marker">
+    </div>
+
+    <!-- Controls -->
+    <div id="controls">
+        <div id="color-mode-indicator">Mode: Migration</div>
+        <button id="change-color-hue">Change Mode</button>
+        <button id="generate-new-data" style="display: none;">Generate New Data</button>
+    </div>
+
+    <!-- Chart Container -->
+    <div id="chart-container">
+        <div id="chart"></div>
+        <button id="close-chart">Close Chart</button>
+        <button id="add-prediction">Add Prediction</button>
+        <button id="download-chart-png">Download Chart as PNG</button>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="data.js"></script>
+    <script src="map.js"></script>
+    <script src="chart.js"></script>
+    <script src="eventHandlers.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
